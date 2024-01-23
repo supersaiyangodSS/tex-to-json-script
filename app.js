@@ -10,7 +10,6 @@ function convertToJSON(inputFile, outputJsonFile) {
 }
 
 function cleanLatexContent(latexContent) {
-  // Remove LaTeX commands and comments, excluding newline characters
   const cleanedContent = latexContent.replace(/\\[^{}\s]+(?:{[^{}]*}|[^{}])?/g, match => (match.includes('\n') ? match : '')).replace(/%[^\n]*\n/g, '');
 const spaceReplacedContent = cleanedContent.replace(/~/g, ' ');
 
@@ -18,11 +17,7 @@ const spaceReplacedContent = cleanedContent.replace(/~/g, ' ');
 }
 
 function parseLatexToJson(latexContent) {
-  // Replace double backslashes with single backslashes
   const cleanedContent = latexContent.replace(/\\\\/g, '\\');
-  
-  // Implement your custom parsing logic here
-  // This is a basic example; adjust based on your specific needs
   const jsonOutput = {
     content: cleanedContent.trim(),
   };
